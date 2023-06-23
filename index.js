@@ -1,6 +1,5 @@
 
 async function loadJSON() {
-    debugger
     try {
         const response = await fetch('products.json');
         if (response.ok) {
