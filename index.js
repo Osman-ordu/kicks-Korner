@@ -1,7 +1,7 @@
 
 async function loadJSON() {
     try {
-        const response = await fetch('product.json');
+        const response = await fetch('products.json');
         if (response.ok) {
             const data = await response.json();
             return data;
