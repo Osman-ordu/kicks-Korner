@@ -1,0 +1,134 @@
+.container{
+    max-width: 1440px;
+    margin: 0 auto;
+    
+}
+/* Listed Area */
+.listed-quantity{
+    display: flex;
+    justify-content:space-between;
+    margin-right: 10px;
+}
+
+/* Listed Area */
+
+/* Filter Area*/
+.filter-area{
+    max-width: calc(100% - 47px);
+    padding: 20px;
+    border: 1px solid black;
+    display: flex;
+    justify-content:space-between;
+    gap: 15px;
+    
+}
+.filter-area div{
+    
+    width: 25%;
+    border: 1px solid black;
+    text-align: center;
+    padding: 20px;
+    cursor: pointer;
+    background-color: #fff;
+    color: #000;
+    font-size: 16px;
+    transition: all 0.3s;
+    border: 1px solid #000;
+    font-weight: bolder;
+}
+
+.filter-area div:hover{
+    background-color: #000;
+    color:#fff;
+
+   
+}
+/* Filter Area*/
+
+
+/* Product*/
+.product-container{
+    max-width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.product-item{
+    width: calc(33.33% - 20px);
+    border: 1px solid #3333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: all 0.3s;
+
+}
+
+.product-item .cart-image{
+    max-width: 100%;
+    object-fit: contain;
+    transition: all 0.3s;
+
+
+}
+
+.product-item .cart-title{
+    font-size: 20px;
+    font-weight: bolder;
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-item .cart-old-price{
+    text-decoration:line-through;
+    
+}
+.product-item:hover{
+    border: 1px solid #000;
+}
+.product-item:hover .cart-image{
+    scale:1.02;
+}
+/* Product*/
+
+
+.season-content{
+    color: green;
+    font-weight: bolder;
+    text-align: end;
+}
+
+.hidden{
+    opacity: 0;
+}
+.active{
+    background-color: #000 !important;
+    color: #fff !important;
+   
+}
+
+
+@media only screen and (max-width: 1200px){
+    
+}
+@media only screen and (max-width: 870px){
+	.product-item{
+        width: calc(50% - 20px);  
+    }
+
+}
+@media only screen and (max-width: 600px){
+    .product-item{
+        width: calc(100% - 20px);  
+    }
+    .filter-area{
+        flex-wrap: wrap;
+    }
+    .filter-area div{
+    
+        width: 100%;
+    }
+	
+}
