@@ -25,38 +25,45 @@ const displayProducts = (products) => {
     productContainer.innerHTML = ''; 
 
     products.forEach(product => {
+      
         const image = product.image,
-              title = product.title,
-              description = product.description,
-              price = product.price,
-              oldPrice = product.oldPrice ?  product.oldPrice : '',
-              season = product.newSeason == true ? 'New Season' : '';
+        title = product.title,
+        description = product.description,
+        price = product.price,
+        oldPrice = product.oldPrice ?  product.oldPrice : '',
+        season = product.newSeason == true ? 'New Season' : '',
+        productId = product.productId,
+        badge = !season ? ((oldPrice - price) / oldPrice * 100).toFixed(2)+'%' : season,
+        badgeClass = season ? 'season' : 'oldSeason'; 
+      
+ 
         const img = new Image();
         img.onload = function () {
-
-            if (img.width > 300) {
+            if (img.complete) {
+              
                 const cartHtml =
                     `<div class="product-item">
                             <div class="image-wrapper">
                                 <img class="cart-image" src="${image}" alt="${title}">
+                                <div class="loader" ></div>
                             </div>
+                            <span class="badge ${badgeClass}">${badge}</span>
                             <div class ="cart-content">
-                            <div class="cart-title">${title}
-                            <span class="season-content">${season}</span>
+                            <div class="cart-title">${title + ' ' + `${productId}`}
+                            
                             </div>
                             <div class="cart-description">${description}</div>
                             <div ${oldPrice ? `class="cart-old-price" ` : `class="cart-old-price hidden"`} > ${oldPrice} TL</div>
                             <div class="cart-price" ${oldPrice ? 'style="color:red;"' : 'style="color:#000;"'}>${price} TL</div>
                             </div>
                         </div>`;
-                productContainer.innerHTML += cartHtml;
-            }
-            
+                 productContainer.innerHTML += cartHtml;
+                 setTimeout(listedQuantity,100)
+                 removeLoader();
+
+            } 
         };
         img.src = image;
-        // Listelenen ürün adeti
-        setTimeout(listedQuantity,100)
-        
     });
 };
 
@@ -126,9 +133,16 @@ const handleTabClick = () => {
       });
     }
   };
-  
-  // Fonksiyonu çağırarak tab tıklama olaylarını dinleyebilirsiniz
   handleTabClick();
   
+  function removeLoader() {
+    const loaders = document.getElementsByClassName('loader');
+    
+    setTimeout(() => {
+      for (let i = 0; i < loaders.length; i++) {
+        loaders[i].classList.remove('loader');
+      }
+    }, 1000);
+  }
 
-
+    
