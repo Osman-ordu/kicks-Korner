@@ -53,8 +53,8 @@ const displayProducts = (products) => {
                             
                             </div>
                             <div class="cart-description">${description}</div>
-                            <div ${oldPrice ? `class="cart-old-price" ` : `class="cart-old-price hidden"`} > ${oldPrice} TL</div>
-                            <div class="cart-price" ${oldPrice ? 'style="color:red;"' : 'style="color:#000;"'}>${price} TL</div>
+                            <span ${oldPrice ? `class="cart-old-price" ` : `class="cart-old-price hidden"`} > ${oldPrice} TL</span>
+                            <span class="cart-price" ${oldPrice ? 'style="color:red;"' : 'style="color:#000;"'}>${price} TL</span>
                             </div>
                         </div>`;
                  productContainer.innerHTML += cartHtml;
