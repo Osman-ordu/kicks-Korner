@@ -1,24 +1,21 @@
 
 async function loadJSON() {
-    try {
-        const response = await fetch('products.json');
-        if (response.ok) {
-            const data = await response.json();
-            return data;
-        } else {
-            throw new Error('JSON dosyası yüklenirken bir hata oluştu.');
-        }
-    } catch (error) {
-        console.error(error);
-    }
+  try {
+    const response = await axios.get('products.json');
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
 }
+
 loadJSON()
-    .then(data => {
-        window.productsArray = data[0];
-        console.log(window.productsArray)
-        displayProducts(window.productsArray);
-    })
-    .catch(error => console.error(error));
+  .then(data => {
+    window.productsArray = data[0];
+    console.log(window.productsArray);
+    displayProducts(window.productsArray);
+  })
+  .catch(error => console.error(error));
+
 
 const displayProducts = (products) => {
     const productContainer = document.getElementById('product-container');
@@ -26,15 +23,15 @@ const displayProducts = (products) => {
 
     products.forEach(product => {
       
-        const image = product.image,
-        title = product.title,
-        description = product.description,
-        price = product.price,
-        oldPrice = product.oldPrice ?  product.oldPrice : '',
-        season = product.newSeason == true ? 'New Season' : '',
-        productId = product.productId,
-        badge = !season ? ((oldPrice - price) / oldPrice * 100).toFixed(2)+'%' : season,
-        badgeClass = season ? 'season' : 'oldSeason'; 
+        const image = product.image;
+        const title = product.title;
+        const description = product.description;
+        const price = product.price;
+        const oldPrice = product.oldPrice ?  product.oldPrice : '';
+        const season = product.newSeason == true ? 'New Season' : '';
+        const productId = product.productId;
+        const badge = !season ? ((oldPrice - price) / oldPrice * 100).toFixed(2)+'%' : season;
+        const badgeClass = season ? 'season' : 'oldSeason'; 
       
  
         const img = new Image();
@@ -53,8 +50,8 @@ const displayProducts = (products) => {
                             
                             </div>
                             <div class="cart-description">${description}</div>
-                            <div ${oldPrice ? `class="cart-old-price" ` : `class="cart-old-price hidden"`} > ${oldPrice} TL</div>
-                            <div class="cart-price" ${oldPrice ? 'style="color:red;"' : 'style="color:#000;"'}>${price} TL</div>
+                            <span ${oldPrice ? `class="cart-old-price" ` : `class="cart-old-price hidden"`} > ${oldPrice} TL</span>
+                            <span class="cart-price" ${oldPrice ? 'style="color:red;"' : 'style="color:#000;"'}>${price} TL</span>
                             </div>
                         </div>`;
                  productContainer.innerHTML += cartHtml;
