@@ -1,3 +1,4 @@
+
 async function loadJSON() {
     try {
         const response = await fetch('product.json');
@@ -58,9 +59,47 @@ const displayProducts = (products) => {
     });
 };
 
+const sortFunctions = {
+    byPrice: () => {
+      window.productsArray.sort((a, b) => {
+        const priceA = parseFloat(a.price);
+        const priceB = parseFloat(b.price);
+        return priceA - priceB;
+      });
+      displayProducts(window.productsArray);
+    },
+    byPriceReverse: () => {
+      window.productsArray.sort((a, b) => {
+        const priceA = parseFloat(a.price);
+        const priceB = parseFloat(b.price);
+        return priceB - priceA;
+      });
+      displayProducts(window.productsArray);
+    
+    },
+    season: () => {
+        const filteredItems = window.productsArray.filter(item => item.newSeason);
+        displayProducts(filteredItems);
+    },
+    oldSeason: () => {
+        const filteredItems = window.productsArray.filter(item => !item.newSeason);
+        displayProducts(filteredItems);
+    }
+  };
 
 
+const sortButton = document.getElementById('sort-button');
+const sortButtonReverse = document.getElementById('sort-button-reverse');
+const sortSeason = document.getElementById('season');
+const sortOldseason = document.getElementById('old-season');
 const productPieces = document.getElementById('product-pieces');
+
+
+sortButton.addEventListener('click', sortFunctions.byPrice);
+sortButtonReverse.addEventListener('click', sortFunctions.byPriceReverse);
+sortSeason.addEventListener('click',sortFunctions.season);
+sortOldseason.addEventListener('click',sortFunctions.oldSeason)
+
 
 const listedQuantity = () => {
     productPieces.innerHTML = document.querySelectorAll('.product-item').length;
