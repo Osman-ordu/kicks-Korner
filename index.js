@@ -1,5 +1,6 @@
 
 async function loadJSON() {
+    debugger
     try {
         const response = await fetch('products.json');
         if (response.ok) {
@@ -14,7 +15,8 @@ async function loadJSON() {
 }
 loadJSON()
     .then(data => {
-        window.productsArray = data.products;
+        window.productsArray = data[0];
+        console.log(window.productsArray)
         displayProducts(window.productsArray);
     })
     .catch(error => console.error(error));
