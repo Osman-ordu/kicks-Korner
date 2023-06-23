@@ -53,6 +53,9 @@ const displayProducts = (products) => {
                             <span ${oldPrice ? `class="cart-old-price" ` : `class="cart-old-price hidden"`} > ${oldPrice} TL</span>
                             <span class="cart-price" ${oldPrice ? 'style="color:red;"' : 'style="color:#000;"'}>${price} TL</span>
                             </div>
+                            <div class="cart-actions">
+                            <button class="add-to-cart" onclick="addToCart('${productId}')">Sepete Ekle</button>
+                          </div>
                         </div>`;
                  productContainer.innerHTML += cartHtml;
                  setTimeout(listedQuantity,100)
@@ -91,6 +94,21 @@ const sortFunctions = {
         displayProducts(filteredItems);
     }
   };
+
+
+if (!window.cartItems) {
+  window.cartItems = [];
+}
+
+const addToCart = (productId) => {
+  const basketCounter = document.getElementById('basket-counter');
+  const product = window.productsArray.find(item => item.productId === productId);
+  if (product) {
+    window.cartItems.push(product);
+    basketCounter.innerHTML = window.cartItems.length; 
+  }
+};
+
 
 
 const sortButton = document.getElementById('sort-button');
