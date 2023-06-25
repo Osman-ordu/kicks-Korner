@@ -14,6 +14,7 @@ loadJSON()
       displayProducts(window.productsArray)
   })
   .catch(error => console.error(error));
+
   const displayProducts = (products) => {
     const productContainer = document.getElementById('product-container');
     productContainer.innerHTML = '';
@@ -190,6 +191,10 @@ const handleTabClick = () => {
     if (updatedCartItems.length > 0) {
       localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
     }
+    if (storedCartItems.length > 0 && window.location.pathname.includes('/categorie.html')) {
+      window.open('/basket.html', '_blank');
+    }
+      
   };
   
   basketButton.addEventListener('click', function() {
