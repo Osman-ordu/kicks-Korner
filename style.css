@@ -176,6 +176,20 @@ header {
     border: 3px solid #000 !important;
     color: red !important;
 }
+.cart-actions{
+    position: absolute;
+    top: 0 ;
+    left: 0;
+}
+.add-to-cart{
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+.fa-square-plus:before {
+    content: "\f0fe";
+    color: #060833;
+}
 
 /* Product*/
 
@@ -192,6 +206,11 @@ header {
 .image-container {
     position: relative;
 }
+.lazy {
+    opacity: 0.5; 
+    transition: opacity 0.3s ease; 
+  }
+  
 
 .loader {
     position: absolute;
