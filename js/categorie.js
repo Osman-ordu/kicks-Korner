@@ -1,7 +1,7 @@
 
 async function loadJSON() {
   try {
-      const response = await axios.get('products.json');
+      const response = await axios.get('/mock/products.json');
       return response.data;
   } catch (error) {
       console.error(error);
