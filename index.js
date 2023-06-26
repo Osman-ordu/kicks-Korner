@@ -109,12 +109,23 @@ if (!window.cartItems) {
 const addToCart = (productId) => {
   const basketCounter = document.getElementById('basket-counter');
   const product = window.productsArray.find(item => item.productId === productId);
-  
+
   if (product && !isProductInCart(product.productId)) {
     window.cartItems.push(product);
-    basketCounter.innerHTML = window.cartItems.length; 
+    basketCounter.innerHTML = window.cartItems.length;
+
+    // Veri kaydetme işlemi
+    const storedCartItems = localStorage.getItem('cartItems');
+    let parsedCartItems = [];
+    if (storedCartItems) {
+      parsedCartItems = JSON.parse(storedCartItems);
+    }
+    parsedCartItems.push(product);
+    const updatedCartItems = JSON.stringify(parsedCartItems);
+    localStorage.setItem('cartItems', updatedCartItems);
   }
 };
+
 
 const isProductInCart = (productId) => {
   return window.cartItems.some(item => item.productId === productId);
