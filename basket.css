@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,300;1,400;1,500&family=Outfit:wght@200;300;400;500;600&family=Questrial&family=Roboto:wght@100;300;400;500;700;900&family=Ysabeau+SC:wght@1;100;200;300;400;500;600;700;800;900;1000&display=swap');
+
+* {
+    font-family: 'Roboto Mono', monospace;
+}
+
+.container,
+header {
+    max-width: 1440px;
+    margin: 0 auto;
+    
+}
+
+
+/* Navigation Area */
+.navigation-bar {
+    margin-bottom: 20px;
+    background: #060833;
+    color: #fff;
+    font-weight: 700;
+    padding: 20px;
+}
+
+.navigation-bar div {
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    font-size: 20px;
+    justify-content: space-between;
+}
+
+#logo img {
+    width: 300px;
+    max-width: 300px;
+}
+
+.fa-solid {
+    font-weight: 900;
+    font-size: 60px;
+    margin-right: 5%;
+    margin-top: 1%;
+}
+
+.fa-solid span {
+    border-radius: 50%;
+    border: 1px solid #000;
+    padding: 5px;
+    background-color: azure;
+    position: absolute;
+    top: -40%;
+    right: -10%;
+    color: red;
+    font-size: 2rem;
+}
+
+/* Navigation Area */
+
+
+/* Product*/
+.product-container {
+    max-width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+
+}
+
+.product-item {
+    width: 100%;
+    border: 1px solid #3333;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    overflow: hidden;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.product-item .cart-image {
+    max-width: 40%;
+    object-fit: contain;
+    transition: all 0.3s;
+
+
+}
+.product-item .image-wrapper{
+    width: 25%;
+}
+
+.product-item .cart-title {
+    font-size: 18px;
+    font-weight: bolder;
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-item .cart-content {
+   width: 60%;
+   display: flex;
+   justify-content: space-between;
+}
+
+.product-item .cart-price {
+    font-size: 16x;
+    font-weight: bolder;
+}
+
+.product-item .cart-old-price {
+    text-decoration: line-through;
+    font-size: 20px;
+    font-weight: bolder;
+
+}
+
+.product-item:hover {
+    border: 1px solid #060833;
+}
+
+.product-item:hover .cart-image {
+    scale: 1.02;
+}
+
+.badge.season,
+.badge.oldSeason {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.3em;
+    border: 3px solid green;
+    padding: 5px;
+    font-weight: bolder;
+    text-align: end;
+}
+
+.badge.oldSeason {
+    border: 3px solid #000 !important;
+    color: red !important;
+}
+
+.btn-delete {
+    background:none;
+    border: none;
+    cursor: pointer;
+
+}
+.btn-delete .fa-trash{
+    font-size: 30px;
+}
+/* Product*/
