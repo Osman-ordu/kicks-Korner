@@ -159,6 +159,9 @@ header {
 .product-item:hover .cart-image {
     scale: 1.02;
 }
+.product-item:hover .cart-actions {
+    opacity: 1;
+}
 
 .badge.season,
 .badge.oldSeason {
@@ -177,9 +180,11 @@ header {
     color: red !important;
 }
 .cart-actions{
+    opacity: 0;
     position: absolute;
     top: 0 ;
     left: 0;
+    transition: all 0.3s ;
 }
 .add-to-cart{
     border: none;

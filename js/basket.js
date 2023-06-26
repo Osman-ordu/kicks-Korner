@@ -3,7 +3,8 @@ let basketCounter;
 const storedCartItems = localStorage.getItem('cartItems');
 
 const renderCartItem = (cartItem) => {
-  const { image, title, description, price, oldPrice, productId } = cartItem;
+  const { image, title, description, price, productId } = cartItem;
+
   return `
     <div class="product-item">
       <div class="image-wrapper">
@@ -12,11 +13,8 @@ const renderCartItem = (cartItem) => {
       <div class="cart-content">
         <div class="cart-title">${title} ${productId}</div>
         <div class="cart-description">${description}</div>
-        <div class="price-container">
-          <span ${oldPrice ? 'class="cart-old-price"' : 'class="cart-old-price hidden"'}>${oldPrice} TL</span>
-          <span class="cart-price" ${oldPrice ? 'style="color:red;"' : 'style="color:#000;"'}>${price} TL</span>
-        </div>
-        <div class="btn-delete-wrapper">
+        <div class="cart-footer">
+        <span class="cart-price">${price} TL</span>
           <button class="btn-delete" onclick="removeItem('${productId}')" type="button"><i class="fa-solid fa-trash"></i></button>
         </div>
       </div>
