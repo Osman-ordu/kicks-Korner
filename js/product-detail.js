@@ -1,6 +1,7 @@
 const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get("product");
-
+window.productsArray = [];
+window.cartItems = [];
 async function loadJSON() {
   try {
     const response = await axios.get('/mock/products.json');
@@ -22,6 +23,7 @@ loadJSON()
     }
     if (foundProduct) {
       displayProductDetails(foundProduct);
+      window.productsArray.push(foundProduct);
     } else {
       console.error("Product not found!");
     }
@@ -34,8 +36,15 @@ loadJSON()
 function displayProductDetails(product) {
   const container = document.getElementById('product-area');
   container.innerHTML = '';
-  const {image,title,description,price,oldPrice,productId} = product;
-  if(product){
+  const {
+    image,
+    title,
+    description,
+    price,
+    oldPrice,
+    productId
+  } = product;
+  if (product) {
     const productHtml = `
     <div class="product-details">
     <img class="product-image" src="${image}" alt="Product Image">
@@ -50,7 +59,7 @@ function displayProductDetails(product) {
             <span class="product-price">${price +'TL'}</span>
         </div>
         <div class="actions">
-            <button type="submit" title="Sepete Ekle" class="add-to-cart" onclick="">
+            <button type="submit" title="Sepete Ekle" class="add-to-cart" onclick="addToCart('${productId}')">
                 <span>Sepete Ekle</span>
             </button>
                                     
@@ -59,6 +68,46 @@ function displayProductDetails(product) {
   </div>
     `;
     container.innerHTML = productHtml;
-  }    
- }
+  }
+}
 
+const addToCart = (productId) => {
+
+  const basketCounter = document.getElementById('basket-counter');
+  const product = window.productsArray.find(item => item.productId === productId);
+  const button = document.querySelector('.add-to-cart');
+
+  if (product) {
+    window.cartItems.push(product);
+    basketCounter.innerHTML = window.cartItems.length;
+
+    // Veri kaydetme işlemi
+    const storedCartItems = localStorage.getItem('cartItems');
+    let parsedCartItems = [];
+    if (storedCartItems) {
+      parsedCartItems = JSON.parse(storedCartItems);
+    }
+    parsedCartItems.push(product);
+    const updatedCartItems = JSON.stringify(parsedCartItems);
+    localStorage.setItem('cartItems', updatedCartItems);
+    button.disabled = true;
+    showPopup();
+  }
+};
+
+
+const basketButton = document.querySelector('.fa-cart-shopping');
+basketButton.addEventListener('click', function () {
+  let basketCounter = document.getElementById('basket-counter').innerText;
+ if(parseInt(basketCounter) > 0){
+  window.open('/basket.html', '_blank');
+ } 
+})
+
+function showPopup() {
+  const popup = document.getElementById('popup');
+  popup.style.display = 'block';
+  setTimeout(function() {
+    popup.style.display = 'none';
+  }, 1000);
+}
