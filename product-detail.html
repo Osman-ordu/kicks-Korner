@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/style/categorie.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="style/product-detail.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 </head>
+
 <body>
     <header>
         <div class="navigation-bar">
@@ -23,23 +25,13 @@
             </div>
         </div>
     </header>
-    <div id="popup" class="popup">
-        Sepete Eklendi!
-      </div>
     <main class="container">
-        <div class="filter-area">
-            <div id="sort-button" class="tab">Fiyata Göre Artan</div>
-            <div id="sort-button-reverse" class="tab">Fiyata Göre Azalan</div>
-            <div id="old-season" class="tab">İndirimli Ürünler</div>
-            <div id="season" class="tab">Çok Satanlar</div>
-        </div>
-        <div class="listed-quantity">
-            <h1 style="margin-left:10px;">Sneakers</h1>
-            <h2><span id="product-pieces"></span> Ürün Listeleniyor</h2>
-        </div>
-        <div id="product-container" class="product-container">
+        <div id="product-area">
+
         </div>
     </main>
-    <script src="/js/categorie.js"></script>
+
+    <script src="/js/product-detail.js"></script>
 </body>
+
 </html>

@@ -159,9 +159,13 @@ header {
 .product-item:hover .cart-image {
     scale: 1.02;
 }
-.product-item:hover .cart-actions {
+.product-item:hover .cart-actions,.view-product {
     opacity: 1;
 }
+.product-item:hover .view-product {
+    opacity: 1;
+}
+
 
 .badge.season,
 .badge.oldSeason {
@@ -195,7 +199,21 @@ header {
     content: "\f0fe";
     color: #060833;
 }
-
+.view-product{
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    background: #3333;
+    color: #000;
+    font-size: 20px;
+    font-weight: bolder;
+    padding: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    z-index: 5000;
+    opacity: 0;
+}
 /* Product*/
 
 .hidden {
@@ -230,6 +248,26 @@ header {
     animation: spin 1s linear infinite;
     z-index: 9999;
 }
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    width: 500px;
+    text-align: center;
+    background: green;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bolder;
+}
+  
+
 
 @keyframes spin {
     0% {
