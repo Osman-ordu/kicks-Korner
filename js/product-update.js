@@ -1,19 +1,19 @@
-let productIdCounter = 100; // Başlangıç değeri
+let productIdCounter = 100;
 
-const fs = require('fs');
+import { readFileSync, writeFileSync } from 'fs';
 
-// product.json dosyasını oku
-const jsonData = fs.readFileSync('products.json', 'utf8');
 
-// JSON verisini JavaScript nesnesine dönüştür
+const jsonData = readFileSync('products.json', 'utf8');
+
+
 const products = JSON.parse(jsonData);
 
 // Ürünleri temsil eden iç içe geçmiş diziyi düzelt
 const flattenedProductsArray = products.flat();
 
 function generateProductId() {
-  const productId = productIdCounter.toString(); // productIdCounter'ı stringe çeviriyoruz
-  productIdCounter++; // productIdCounter'ı 1 artırıyoruz
+  const productId = productIdCounter.toString();
+  productIdCounter++;
   return productId;
 }
 
@@ -27,7 +27,7 @@ if (Array.isArray(flattenedProductsArray)) {
   const updatedJsonData = JSON.stringify(products);
 
   // product.json dosyasına güncellenmiş veriyi yaz
-  fs.writeFileSync('products.json', updatedJsonData, 'utf8');
+  writeFileSync('products.json', updatedJsonData, 'utf8');
 } else {
   console.log("flattenedProductsArray değişkeni bir dizi değil.");
 }
