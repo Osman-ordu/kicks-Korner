@@ -57,6 +57,7 @@ const removeItem = (itemId) => {
   localStorage.setItem('cartItems', storedCartItems);
 
   counterUpdate();
+  updateTotalPrice()
   return updatedCartItems;
 };
 
@@ -67,3 +68,26 @@ const counterUpdate = () => {
 };
 
 renderCartItems();
+
+let totalPrice = 0;
+
+const updateTotalPrice = () => {
+ 
+  const elements = document.getElementsByClassName('cart-price');
+  let newTotal = 0;
+
+  for (const element of elements) {
+    const priceText = element.textContent;
+    const price = parseFloat(priceText.replace('TL', '').trim());
+
+    if (!isNaN(price)) {
+      newTotal += price;
+    }
+  }
+
+  totalPrice = newTotal;
+  const totalPriceElement = document.getElementById('total-price');
+  totalPriceElement.textContent = `Toplam fiyat: ${totalPrice}`;
+};
+
+updateTotalPrice()
